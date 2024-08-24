@@ -44,7 +44,7 @@ export class LoginComponent {
         next: (response) => {
           console.log('Inicio de sesión exitoso', response);
           localStorage.setItem('isLoggedin', 'true');
-          this.global.setRoute('home');
+          this.global.setRoute('home-user');
         },
         error: (error) => {
           console.error('Error en el inicio de sesión', error);

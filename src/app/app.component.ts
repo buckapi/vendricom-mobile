@@ -15,6 +15,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { LoginComponent } from './components/login/login.component';
 import { PocketAuthService } from './services/auth-pocketbase.service';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -27,7 +28,8 @@ import { PocketAuthService } from './services/auth-pocketbase.service';
     FooterComponent,
     HeaderComponent,
     BookingComponent,
-    LoginComponent
+    LoginComponent,
+    HomeUserComponent
   
 
 ],

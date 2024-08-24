@@ -8,22 +8,19 @@ import { RealtimeSpecialistsService } from '@app/services/realtime-specialists.s
 import { CommonModule } from '@angular/common';
 import { GlobalService } from '@app/services/global-service.service';
 import { PocketAuthService } from '@app/services/auth-pocketbase.service';
-
-// Define la interfaz Specialty directamente en este archivo
 interface Specialty {
   name: string;
   id: string;
   fatherId: string;
 }
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-user',
   standalone: true,
-  imports: [HttpClientModule, FooterComponent, CommonModule],
-  templateUrl: './home.component.html',
-  // styleUrl: './home.component.css'
-  styleUrls: ['./home.component.css'],
+  imports: [FooterComponent, CommonModule],
+  templateUrl: './home-user.component.html',
+  styleUrl: './home-user.component.css'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeUserComponent {
   specialists: any[] = [];
   private subscription: Subscription = new Subscription();
   constructor(private realtimeSpecialistsService: RealtimeSpecialistsService,

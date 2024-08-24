@@ -1,15 +1,18 @@
-<app-header [hidden]="global.activateRoute=='profile' "></app-header>
-    <app-home [hidden]="global.activateRoute!='home'"></app-home>
-    <app-chat [hidden]="global.activateRoute!='chat'"></app-chat>
-    <app-login [hidden]="global.activateRoute!='login'"></app-login>
-    <app-booking [hidden]="global.activateRoute!='booking'"></app-booking>
-    <app-profile [hidden]="global.activateRoute!='profile'"></app-profile>
-<app-footer></app-footer>
+<app-header *ngIf="global.activateRoute !== 'home'"></app-header>
+<app-home [hidden]="global.activateRoute !== 'home'"></app-home>
+<app-home-user [hidden]="global.activateRoute !== 'home-user'"></app-home-user>
+<app-chat [hidden]="global.activateRoute !== 'chat'"></app-chat>
+<app-login [hidden]="global.activateRoute !== 'login'"></app-login>
+<app-booking [hidden]="global.activateRoute !== 'booking'"></app-booking>
+<app-profile [hidden]="global.activateRoute !== 'profile'"></app-profile>
+<app-footer *ngIf="global.activateRoute !== 'home'"></app-footer>
+
+
 
 <!-- create project -->
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="createProject" aria-labelledby="offcanvasBottomLabel">
 <div class="offcanvas-header style-1">
-  <h5 class="offcanvas-title" id="offcanvasBottomLabel">Especialidad</h5>
+  <h5 class="offcanvas-title" id="offcanvasBottomLabel">Documentos</h5>
   <span class="icon-close2 icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
 </div>
 <div class="offcanvas-body pb-32">
