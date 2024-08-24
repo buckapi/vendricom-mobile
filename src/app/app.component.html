@@ -1,0 +1,511 @@
+<app-header [hidden]="global.activateRoute=='profile' "></app-header>
+    <app-home [hidden]="global.activateRoute!='home'"></app-home>
+    <app-chat [hidden]="global.activateRoute!='chat'"></app-chat>
+    <app-login [hidden]="global.activateRoute!='login'"></app-login>
+    <app-booking [hidden]="global.activateRoute!='booking'"></app-booking>
+    <app-profile [hidden]="global.activateRoute!='profile'"></app-profile>
+<app-footer></app-footer>
+
+<!-- create project -->
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="createProject" aria-labelledby="offcanvasBottomLabel">
+<div class="offcanvas-header style-1">
+  <h5 class="offcanvas-title" id="offcanvasBottomLabel">Especialidad</h5>
+  <span class="icon-close2 icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
+</div>
+<div class="offcanvas-body pb-32">
+    <input type="text" placeholder="Project Name">
+    <div class="mt-24">
+        <h5 class="text-black-2">Layout</h5>
+        <ul class="grid-2 gap-20 mt-16">
+            <li class="layout-project act-suggest active">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.84426 3.04199C7.15926 3.04199 7.41462 3.29735 7.41462 3.61235V6.27403H10.0763C10.3913 6.27403 10.6467 6.5294 10.6467 6.84439C10.6467 7.15938 10.3913 7.41475 10.0763 7.41475H7.41462V10.0764C7.41462 10.3914 7.15926 10.6468 6.84426 10.6468C6.52927 10.6468 6.27391 10.3914 6.27391 10.0764V7.41475H3.61223C3.29723 7.41475 3.04187 7.15938 3.04187 6.84439C3.04187 6.5294 3.29723 6.27403 3.61223 6.27403H6.27391V3.61235C6.27391 3.29735 6.52927 3.04199 6.84426 3.04199Z" fill="#31394F"/>
+                    <path d="M0 2.47156C0 1.10655 1.10655 0 2.47156 0H11.2171C12.582 0 13.6886 1.10655 13.6886 2.47156V11.2171C13.6886 12.582 12.582 13.6886 11.2171 13.6886H2.47156C1.10655 13.6886 0 12.582 0 11.2171V2.47156ZM2.47156 1.14072C1.73655 1.14072 1.14072 1.73655 1.14072 2.47156V11.2171C1.14072 11.9521 1.73655 12.5479 2.47156 12.5479H11.2171C11.9521 12.5479 12.5479 11.9521 12.5479 11.2171V2.47156C12.5479 1.73655 11.9521 1.14072 11.2171 1.14072H2.47156Z" fill="#31394F"/>
+                    </svg>
+                    
+                <span class="h9">List</span>                            
+            </li>
+            <li class="layout-project act-suggest">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.8">
+                    <path d="M3.33337 3.33325H8.33337M11.6667 3.33325H16.6667M5.00004 6.66659H6.66671C7.58718 6.66659 8.33337 7.41278 8.33337 8.33325V14.9999C8.33337 15.9204 7.58718 16.6666 6.66671 16.6666H5.00004C4.07957 16.6666 3.33337 15.9204 3.33337 14.9999V8.33325C3.33337 7.41278 4.07957 6.66659 5.00004 6.66659ZM13.3334 6.66659H15C15.9205 6.66659 16.6667 7.41278 16.6667 8.33325V9.99992C16.6667 10.9204 15.9205 11.6666 15 11.6666H13.3334C12.4129 11.6666 11.6667 10.9204 11.6667 9.99992V8.33325C11.6667 7.41278 12.4129 6.66659 13.3334 6.66659Z" stroke="#31394F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+                <span class="h9">Board</span>  
+            </li>
+        </ul>
+    </div>
+    <div class="mt-24">
+        <h5 class="text-black-2">Ubicación</h5>
+        
+        <div class="dropdown mt-16">
+            <!-- <div class="dropdown-toggle drop-select-visibility" data-bs-toggle="dropdown">
+                    <span class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.8">
+                            <path d="M2.5 17.5V15.8333C2.5 14.9493 2.85119 14.1014 3.47631 13.4763C4.10143 12.8512 4.94928 12.5 5.83333 12.5H9.16667C10.0507 12.5 10.8986 12.8512 11.5237 13.4763C12.1488 14.1014 12.5 14.9493 12.5 15.8333V17.5M13.3333 2.60834C14.0503 2.79192 14.6859 3.20892 15.1397 3.7936C15.5935 4.37827 15.8399 5.09736 15.8399 5.8375C15.8399 6.57765 15.5935 7.29674 15.1397 7.88141C14.6859 8.46609 14.0503 8.88309 13.3333 9.06667M17.5 17.5V15.8334C17.4958 15.0977 17.2483 14.384 16.7961 13.8037C16.3439 13.2234 15.7124 12.8089 15 12.625M10.8333 5.83333C10.8333 7.67428 9.34095 9.16667 7.5 9.16667C5.65905 9.16667 4.16667 7.67428 4.16667 5.83333C4.16667 3.99238 5.65905 2.5 7.5 2.5C9.34095 2.5 10.8333 3.99238 10.8333 5.83333Z" stroke="#31394F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg>                              
+                    </span>
+                    <div class="title-visibility text-val-drop">Public</div>
+            </div> -->
+            <div class="dropdown-menu dropdown-visibility full">
+                    <div class="dropdown-item val-drop act-suggest2 active">
+                        <div class="title-visibility title-drop">Public</div>
+                    </div>
+                    <div class="dropdown-item val-drop act-suggest2">
+                        <div class="title-visibility title-drop">Private</div>
+                    </div>                    
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="swiper tf-swiper" data-space-between="0" data-preview="1.3" data-tablet="1.5" data-desktop="2">
+      <div class="swiper-wrapper">
+        <span class="badge primary badge-lg" style="margin-right: 10px;">      Todas</span>
+
+        <!-- <div class="swiper-slide" *ngFor="let specialist of pocketbase.specialists$ | async" > -->
+          <div class="swiper-slide" >
+          <span class="badge secondary badge-lg">      especialidad</span>
+          <!-- <div class="d-flex gap-10 flex-wrap">
+            <ng-container *ngFor="let specialty of specialist.specialties">
+              <span class="badge light-primary badge-lg">{{ specialty.name }}</span>
+            </ng-container>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-24">
+      <h6 class="text-black-2">Can Access</h6>
+      <div class="dropdown mt-10">
+          <div class="dropdown-toggle drop-select-access select" data-bs-toggle="dropdown">
+              <img src="assets/images/project/nft.jpg" alt="img">
+              <div class="content">
+                  <div class="body-4 text-black-2 fw-bold text-val-drop">NFT Website Design</div>
+                  <p class="body-2 text-black-5 desc-val-drop">Workspace</p>
+              </div>
+          </div>
+          <div class="dropdown-menu dropdown-access full">
+              <div class="dropdown-item val-drop">
+                  <div class="content">
+                      <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design</div>
+                      <p class="body-2 text-black-5 desc-drop">Workspace</p>
+                  </div>
+              </div>
+              <div class="dropdown-item val-drop">
+                  <div class="content">
+                      <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design UX</div>
+                      <p class="body-2 text-black-5 desc-drop">Workspace UX</p>
+                  </div>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+    <!-- <div class="mt-24">
+        <a href="invite-colleagues.html" class="tf-btn outline-btn-primary style-1 gap-8">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.84426 6.04199C10.1593 6.04199 10.4146 6.29735 10.4146 6.61235V9.27403H13.0763C13.3913 9.27403 13.6467 9.5294 13.6467 9.84439C13.6467 10.1594 13.3913 10.4147 13.0763 10.4147H10.4146V13.0764C10.4146 13.3914 10.1593 13.6468 9.84426 13.6468C9.52927 13.6468 9.27391 13.3914 9.27391 13.0764V10.4147H6.61223C6.29723 10.4147 6.04187 10.1594 6.04187 9.84439C6.04187 9.5294 6.29723 9.27403 6.61223 9.27403H9.27391V6.61235C9.27391 6.29735 9.52927 6.04199 9.84426 6.04199Z" fill="#00a08f"/>
+                <path d="M3 5.47156C3 4.10655 4.10655 3 5.47156 3H14.2171C15.582 3 16.6886 4.10655 16.6886 5.47156V14.2171C16.6886 15.582 15.582 16.6886 14.2171 16.6886H5.47156C4.10655 16.6886 3 15.582 3 14.2171V5.47156ZM5.47156 4.14072C4.73655 4.14072 4.14072 4.73655 4.14072 5.47156V14.2171C4.14072 14.9521 4.73655 15.5479 5.47156 15.5479H14.2171C14.9521 15.5479 15.5479 14.9521 15.5479 14.2171V5.47156C15.5479 4.73655 14.9521 4.14072 14.2171 4.14072H5.47156Z" fill="#00a08f"/>
+            </svg>
+            Add Member
+        </a>
+        <a href="create-task.html" class="mt-35 tf-btn primary">aplicar</a>
+    </div> -->
+</div>
+</div>
+
+<!-- notification -->
+<div class="offcanvas offcanvas-end full" id="notification">
+<div class="header fixed-top line-bt">
+    <div class="left" data-bs-dismiss="offcanvas">
+        <a href="javascript:void(0);" class="icon"><i class="icon-back"></i></a>
+    </div>
+    <h5>Notification</h5>
+    <div class="right">
+        <a href="javascript:void(0);" class="icon text-black-6"><i class="icon-search"></i></a>
+    </div>  
+</div> 
+<div class="overflow-auto app-content">
+    <div class="tf-container">
+        <div class="mt-24 d-flex justify-content-between align-items-center">
+            <div class="box-filter select-wrapper style-2">
+                <select class="tf-select">
+                    <option>All</option>
+                </select>
+            </div>
+            <a href="index.html#" class="box-filter type-1">
+                <span class="icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.6">
+                        <path d="M12 8H4" stroke="#31394F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 4H2" stroke="#31394F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.26921 12H6.60254" stroke="#31394F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>                            
+                </span>
+                Filter
+            </a>
+        </div>
+        <div class="mt-24 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-8">
+                <h6 class="text-black-2">Unread</h6>
+                <span class="num-task type-4">2</span>
+            </div>
+            <a href="javascript:void(0);" class="icon-more fs-20 text-black-5"></a>
+        </div>
+        <ul class="mt-20">
+            <li>
+                <a href="index.html#" class="box-noti-task">
+                    <div class="avatar avt-36">
+                        <img src="assets/images/avt/avt1.jpg" alt="avt">
+                    </div>
+                    <div class="content">
+                        <div class="title">Rafi Islam Apon <span>mentoined you on</span> NFT Website and Mobile App Design</div>
+                        <p class="mt-6">Today at 10:04 AM <span class="dot"></span>Redesign Dashboar...</p>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-16">
+                <a href="index.html#" class="box-noti-task">
+                    <div class="avatar avt-36">
+                        <img src="assets/images/avt/avt4.jpg" alt="avt">
+                    </div>
+                    <div class="content">
+                        <div class="title">Zara Yasmin Tasnim <span>mentoined you on</span> Redesign Dashboard Finance</div>
+                        <p class="mt-6">Today at 10:04 AM <span class="dot"></span>Redesign Dashboar...</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="mt-24">
+            <div class="d-flex align-items-center justify-content-between">
+                <h6 class="text-black-2">Yesterday</h6>
+                <a href="javascript:void(0);" class="icon-more fs-20 text-black-5"></a>
+            </div>
+            <ul class="mt-20">
+                <li>
+                    <a href="index.html#" class="box-noti-task">
+                        <div class="avatar avt-36">
+                            <img src="assets/images/avt/avt8.jpg" alt="avt">
+                        </div>
+                        <div class="content">
+                            <div class="title">David Malan<span>mentoined you on</span> Real Estate Website Design Project </div>
+                            <p class="mt-6">Yesterday at 2:40 PM <span class="dot"></span>Real Estate We...</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="mt-16">
+                    <a href="index.html#" class="box-noti-task">
+                        <div class="avatar avt-36">
+                            <img src="assets/images/avt/avt5.jpg" alt="avt">
+                        </div>
+                        <div class="content">
+                            <div class="title">Ikram Islam Tamim <span>mentoined you on</span> Architecture Web Design Project</div>
+                            <p class="mt-6">Yeasterday at 1:10 PM <span class="dot"></span>Architecture We...</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</div>       
+</div>
+
+<!-- sidebar -->
+<div class="modal fade modalLeft" id="sidebar">
+<div class="modal-dialog" role="document">
+    <div class="modal-content modal-sidebar">
+        <div class="sidebar-header" style="background-image: url('https://themesflat.co/html/taskose/taskose/assets/images/background/line-logo.png')">
+            <a href="index.html" class="sidebar-logo">
+                <img src="https://www.camiwa.com/assets/camiwa/images/icon/specialist.png" alt="img">
+            </a>
+            <p>Vendricom</p>
+        </div>
+        <div class="sidebar-content">
+            <div class="d-flex gap-10 align-items-center pb-20 line-bt">
+                <div class="avatar avt-40">
+                    <img src="assets/images/avt/avt2.jpg" alt="img">
+                </div>
+                <div class="content-right">
+                    <p class="text-1">Hola</p>
+                    <h6 class="fw-7">Jennifer Parada</h6>
+                </div>
+            </div>
+            <ul class="pt-20 pb-20">
+                <li class="text-sm-start text-uppercase fw-7 text-2">Main menu</li>
+             
+                <li class="mt-16" *ngIf="auth.isLogin()">
+                    <a (click)="auth.logoutUser()" class="nav-link-item not-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path opacity="0.4" d="M1.66602 5.37258C1.66602 3.33008 3.35788 1.66675 5.43646 1.66675H9.57072C11.6451 1.66675 13.3327 3.32508 13.3327 5.36425V14.6276C13.3327 16.6709 11.6408 18.3334 9.56139 18.3334H5.42883C3.35364 18.3334 1.66602 16.6751 1.66602 14.6359V13.8526V5.37258Z" fill="#D3D5DA"/>
+                            <path d="M18.149 9.54579L15.7775 7.12162C15.5324 6.87162 15.138 6.87162 14.8937 7.12329C14.6502 7.37495 14.651 7.78079 14.8953 8.03079L16.1947 9.35828H14.9489H7.95696C7.61203 9.35828 7.33203 9.64579 7.33203 9.99995C7.33203 10.355 7.61203 10.6416 7.95696 10.6416H16.1947L14.8953 11.9691C14.651 12.2191 14.6502 12.625 14.8937 12.8766C15.0162 13.0025 15.1761 13.0658 15.3368 13.0658C15.4959 13.0658 15.6558 13.0025 15.7775 12.8783L18.149 10.455C18.2667 10.3341 18.3333 10.1708 18.3333 9.99995C18.3333 9.82995 18.2667 9.66662 18.149 9.54579Z" fill="#D3D5DA"/>
+                        </svg>
+                        <span>Cerrar sesion</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+        
+        
+    </div>
+</div>
+</div>
+
+<!-- modal Page -->
+<div class="modal fade modalLeft" id="modalPage">
+<div class="modal-dialog" role="document">
+    <div class="modal-content modal-second">
+        <div class="header line-bt">
+            <div class="left" data-bs-dismiss="modal">
+              <a href="javascript:void(0);" class="icon"><i class="icon-back"></i></a>
+            </div>
+            <h4>Pages</h4>  
+        </div> 
+        <div class="overflow-auto">
+            <div class="tf-container">
+                <ul>
+                  <li><a href="boarding.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Boarding 01</span>
+                  </a></li>
+                  <li><a href="boarding-02.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Boarding 02</span>
+    
+                  </a></li>
+                  <li><a href="boarding-03.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Boarding 03</span>
+    
+                  </a></li>
+                  <li><a href="sign-in.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Sign In</span>
+                  </a></li>
+                  <li><a href="sign-up.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Sign Up</span>
+    
+                  </a></li>
+                  <li><a href="signUp-verify-email.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Sign Up Verify Code Email</span>
+    
+                  </a></li>
+                  <li><a href="signUp-verify-code-phone.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Sign Up Verify Phone</span>
+                  </a></li>
+                  <li><a href="successfully.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Successfully</span>
+                    
+                  </a></li>
+                  <li><a href="forgot-pass.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Forgot Pass</span>
+                  </a></li> 
+                  <li><a href="forgot-pass-with-mail.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Forgot Pass With Mail</span>
+                  </a></li>
+                  <li><a href="forgot-pass-with-phone.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Forgot Pass With Phone</span>
+                  </a></li>
+                
+                  <li><a href="otp-code.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Verify Code</span>
+                  </a></li>
+                  <li><a href="new-pass.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Create New Password</span>
+                  </a></li>
+                  <li><a href="successfully-02.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Successfully 02</span>
+                  </a></li>
+                  <li><a href="my-task.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>My Task</span>
+                  </a></li>
+                  <li><a href="my-task-calendar-view.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>My Task Calendar View</span>
+                  </a></li>
+                  <li><a href="my-project-empty-task.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Empty Task</span>
+                  </a></li>
+                  <li><a href="my-project.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>My Project (Board View)</span>
+                  </a></li>
+                  <li><a href="my-project-list-view.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>My Project (List View)</span>
+                  </a></li>
+                  <li><a href="task-detail-calendar.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Task Detail Calendar</span>
+                  </a></li>
+                  <li><a href="project-details.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Project Details</span>
+                  </a></li>
+                  <li><a href="create-task.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Create New Task</span>
+                  </a></li>
+                  <li><a href="add-tag.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Add Task</span>
+                  </a></li>
+                  <li><a href="share-task.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Share Task</span>
+                  </a></li>
+                  <li><a href="invite-colleagues.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Invite Colleagues</span>
+                  </a></li>
+                  <li><a href="select-role.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Select Role</span>
+                  </a></li>
+                  <li><a href="empty-notification.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Empty Notification</span>
+                  </a></li>
+                  <li><a href="empty-inbox.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Empty Inbox</span>
+                  </a></li>
+                  <li><a href="message.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>New Message</span>
+                  </a></li>
+                  <li><a href="detail-message.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Detail Message</span>
+                  </a></li>
+                  <li><a href="chat-contact.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Chat Contact</span>
+                  </a></li>
+                  <li><a href="chat-detail.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Chat Details</span>
+                  </a></li>
+                  <li><a href="profile.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Profile</span>
+                  </a></li>
+                  <li><a href="edit-profile.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Edit Profile</span>
+                  </a></li>
+                  <li><a href="help-search.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Help Search</span>
+                  </a></li>
+                  <li><a href="help-search-result.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                    <span>Help Search Result</span>
+                  </a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+<!-- modal component -->
+<div class="modal fade modalLeft" id="modalComponent">
+<div class="modal-dialog" role="document">
+    <div class="modal-content modal-second">
+        <div class="header line-bt">
+            <div class="left" data-bs-dismiss="modal">
+              <a href="javascript:void(0);" class="icon"><i class="icon-back"></i></a>
+            </div>
+            <h4>Components</h4>  
+        </div> 
+        <div class="overflow-auto">
+            <div class="tf-container">
+                <ul>
+                    <li><a href="ui-alert.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-alert"></i>
+                      <span>Alert</span>
+                    </a></li>
+                    <li><a href="ui-avatar.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-avt"></i>
+                      <span>Avatar</span>
+                    </a></li>
+                    <li><a href="ui-button.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-btn"></i>
+                      <span>Button</span>
+                    </a></li>
+                    <li><a href="ui-radio.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-radio"></i>
+                      <span>Radio button</span>
+                    </a></li>
+                    <li><a href="ui-input.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-input"></i>
+                      <span>Input</span>
+                    </a></li>
+                    <li><a href="ui-badge.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-badge"></i>
+                      <span>Badge</span>
+                    </a></li>
+                    <li><a href="ui-btn-group.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-btn-group"></i>
+                      <span>Button group</span>
+                    </a></li>
+                    <li><a href="ui-card.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-card"></i>
+                      <span>Card</span>
+                    </a></li>
+                    <li><a href="ui-chart.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-chart"></i>
+                      <span>Charts</span>
+                    </a></li>
+                    <li><a href="ui-dropdown.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-dropdown"></i>
+                      <span>Dropdown</span>
+                    </a></li>
+                   
+                    <li><a href="ui-timeline.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-timeline"></i>
+                      <span>Timeline</span>
+                    </a></li>
+                    <li><a href="ui-list-group.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-listgroup"></i>
+                      <span>List group</span>
+                    </a></li>
+                    <li><a href="ui-modal.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-modal"></i>
+                      <span>Modal</span>
+                    </a></li>
+                   
+                    <li><a href="ui-progressbar.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-progress"></i>
+                      <span>Progressbar</span>
+                    </a></li>
+                   
+                    <li><a href="ui-typography.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-typo"></i>
+                      <span>Typography</span>
+                    </a></li>
+                    <li><a href="ui-toast.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-toast"></i>
+                      <span>Toast</span>
+                    </a></li>
+                    <li><a href="ui-treeview.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-treeview"></i>
+                      <span>Treeview</span>
+                    </a></li>
+                    <li><a href="ui-switch.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-sw"></i>
+                      <span>Switch</span>
+                    </a></li>
+                    <li><a href="ui-stepper.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-stepper"></i>
+                      <span>Stepper</span>
+                    </a></li>
+                    <li><a href="ui-spinner.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-spin"></i>
+                      <span>Spinner</span>
+                    </a></li>
+                    <li><a href="ui-rangle-slider.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-range"></i>
+                      <span>Range slider</span>
+                    </a></li>
+                    <li><a href="ui-lightgallery.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-gallery"></i>
+                      <span>Light gallery</span>
+                    </a></li>
+                    <li><a href="ui-divider.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <i class="icon icon-divider"></i>
+                      <span>Divider</span>
+                    </a></li>
+                    <li><a href="ui-language.html" class="nav-link-item pt-16 pb-16 not-link">
+                      <i class="icon icon-language"></i>
+                      <span>Language</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>

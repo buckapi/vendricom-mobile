@@ -1,0 +1,46 @@
+<div class="header-profile bg-primary style-1 fixed-top" [hidden]="global.activateRoute=='login'">
+  
+    <!-- <div class="left">
+        <div class="avt">
+            <img src="assets/images/avt/avt2.jpg" alt="avatar">
+            <span class="dot-status"></span>
+        </div>
+        <div class="content">
+            <h5 class="text-white">Stefanny Parada</h5>
+            <p class="body-2 text-white">Hola Jennifer, buenos dias!</p>
+        </div>
+    </div> -->
+    <div class="left">
+        <div class="">
+            <img src="assets/images/avt/cam.png" alt="avatar">
+            <!-- <span class="dot-status"></span> -->
+        </div>
+        <div class="content">
+            <h5 class="text-white ">Vendricom</h5>
+            <p class="body-2 text-white"></p>
+        </div>
+    </div>
+    <div class="right" *ngIf="auth.isLogin()">
+        <a href="#sidebar" data-bs-toggle="modal">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="1">
+                <path d="M2.5 10H17.5" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.5 5H17.5" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.5 15H17.5" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </a>
+       
+        <a href="#notification" class="box-noti" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
+            <i class="icon-bell text-white"></i>
+            <span class="dot-danger"></span>
+        </a>
+    </div>
+   
+</div>
+<div class="header fixed-top line-bt" [hidden]="global.activateRoute!='login'">
+    <div  class="left">
+      <a (click)="global.setRoute('home')" class="icon back-btn"><i class="icon-back"></i></a>
+    </div>
+    <h4>Inicio de sesión</h4> 
+</div>
