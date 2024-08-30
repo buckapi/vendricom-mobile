@@ -20,13 +20,13 @@ export class PocketAuthService {
   async saveCategor(categoryData: any): Promise<any> {
     try {
       const record = await this.pb
-        .collection('camiwaCategories')
+        .collection('vendricomDocuments')
         .create(categoryData);
-      console.log('Categoría guardada exitosamente:', record);
+      console.log('documento guardada exitosamente:', record);
 
       return record; // Si necesitas devolver el registro creado
     } catch (error) {
-      console.error('Error al guardar la categoría:', error);
+      console.error('Error al guardar la documento:', error);
       throw error; // Puedes lanzar el error para manejarlo en otro lugar
     }
   }
@@ -34,13 +34,13 @@ export class PocketAuthService {
   async saveSpecialty(specialtyData: any): Promise<any> {
     try {
       const record = await this.pb
-        .collection('camiwaSpecialties')
+        .collection('vendricomNormativas')
         .create(specialtyData);
-      console.log('Especialidad guardada exitosamente:', record);
+      console.log('normativa guardada exitosamente:', record);
       // this.global.getSpecialties();
       return record; // Si necesitas devolver el registro creado
     } catch (error) {
-      console.error('Error al guardar la especialidad:', error);
+      console.error('Error al guardar la normativa:', error);
       throw error; // Puedes lanzar el error para manejarlo en otro lugar
     }
   }
@@ -77,7 +77,7 @@ export class PocketAuthService {
             status: 'pending', // Opcional, establece el estado del cliente
             images: {}, // Agrega los campos correspondientes aquí
           };
-          return this.pb.collection('camiwaTravelers').create(data);
+          return this.pb.collection('vendricomClients').create(data);
         })
     );
   }

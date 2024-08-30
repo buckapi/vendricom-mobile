@@ -354,8 +354,8 @@ body {
  */  
   background: #0d0b1c;
   color: #fff;
-  min-height: 100vh;
-  width: 100%;
+/*   min-height: 100vh;
+ */  width: 100%;
 }
 
 a {
@@ -1681,8 +1681,8 @@ select {
   margin: 0 auto;
   left: 0;
   right: 0;
-/*   background-color: #fff;
- */}
+  background-color: #11071d;
+}
 
 .header-profile {
   padding: 22px 24px 22px;

@@ -10,12 +10,13 @@ export class RealtimeSpecialistsService implements OnDestroy {
   private specialistsSubject = new BehaviorSubject<any[]>([]);
 
   // Esta es la propiedad que expondrá el Observable para que los componentes puedan suscribirse a ella
-  public specialists$: Observable<any[]> =
+  public documents$: Observable<any[]> =
     this.specialistsSubject.asObservable();
 
   constructor() {
     this.pb = new PocketBase('https://db.buckapi.com:8090');
     this.subscribeToSpecialists();
+    this.subscribeToDocuments();
   }
 
   private async subscribeToSpecialists() {
@@ -25,12 +26,26 @@ export class RealtimeSpecialistsService implements OnDestroy {
       .authWithPassword('admin@email.com', 'admin1234');
 
     // Suscribirse a cambios en cualquier registro de la colección 'camiwaSpecialists'
-    this.pb.collection('camiwaSpecialists').subscribe('*', (e) => {
+    this.pb.collection('vendricomDocuments').subscribe('*', (e) => {
       this.handleRealtimeEvent(e);
     });
 
     // Inicializar la lista de especialistas
-    this.updateSpecialistsList();
+    this.updateDocumentsList();
+  }
+  private async subscribeToDocuments  () {
+    // (Opcional) Autenticación
+    await this.pb
+      .collection('users')
+      .authWithPassword('admin@email.com', 'admin1234');
+
+    // Suscribirse a cambios en cualquier registro de la colección 'camiwaSpecialists'
+    this.pb.collection('vendricomDocuments').subscribe('*', (e) => {
+      this.handleRealtimeEvent(e);
+    });
+
+    // Inicializar la lista de especialistas
+    this.updateDocumentsList();
   }
 
   private handleRealtimeEvent(event: any) {
@@ -39,13 +54,13 @@ export class RealtimeSpecialistsService implements OnDestroy {
     console.log(event.record);
 
     // Actualizar la lista de especialistas
-    this.updateSpecialistsList();
+    this.updateDocumentsList();
   }
 
-  private async updateSpecialistsList() {
+  private async updateDocumentsList() {
     // Obtener la lista actualizada de especialistas
     const records = await this.pb
-      .collection('camiwaSpecialists')
+      .collection('vendricomDocuments')
       .getFullList(200 /* cantidad máxima de registros */, {
         sort: '-created', // Ordenar por fecha de creación
       });
@@ -54,6 +69,6 @@ export class RealtimeSpecialistsService implements OnDestroy {
 
   ngOnDestroy() {
     // Desuscribirse cuando el servicio se destruye
-    this.pb.collection('camiwaSpecialists').unsubscribe('*');
+    this.pb.collection('vendricomDocuments').unsubscribe('*');
   }
 }

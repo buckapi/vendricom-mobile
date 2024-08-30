@@ -13,6 +13,11 @@ interface Specialty {
   id: string;
   fatherId: string;
 }
+interface documents {
+  name: string;
+  id: string;
+  fatherId: string;
+}
 @Component({
   selector: 'app-home-user',
   standalone: true,
@@ -22,14 +27,15 @@ interface Specialty {
 })
 export class HomeUserComponent {
   specialists: any[] = [];
+  documents: any []=[];
   private subscription: Subscription = new Subscription();
   constructor(private realtimeSpecialistsService: RealtimeSpecialistsService,
     public auth: PocketAuthService,
     public global:GlobalService
   ) {}
   ngOnInit(): void {
-    this.realtimeSpecialistsService.specialists$.subscribe((data) => {
-      this.specialists = data;
+    this.realtimeSpecialistsService.documents$.subscribe((data) => {
+      this.documents = data;
   
     });
   }

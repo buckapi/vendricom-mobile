@@ -10,11 +10,11 @@ import { GlobalService } from '@app/services/global-service.service';
 import { PocketAuthService } from '@app/services/auth-pocketbase.service';
 
 // Define la interfaz Specialty directamente en este archivo
-interface Specialty {
+/* interface Specialty {
   name: string;
   id: string;
   fatherId: string;
-}
+} */
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -31,10 +31,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     public global:GlobalService
   ) {}
   ngOnInit(): void {
-    this.realtimeSpecialistsService.specialists$.subscribe((data) => {
+    /* this.realtimeSpecialistsService.specialists$.subscribe((data) => {
       this.specialists = data;
   
-    });
+    }); */
   }
 
   ngOnDestroy(): void {

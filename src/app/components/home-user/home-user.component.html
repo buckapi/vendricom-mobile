@@ -12,22 +12,25 @@
         
             <div class="pt-30">
                 <div class="section-title d-flex justify-content-between align-items-center">
-                    <h3>Especialistas destacados</h3>
-                    <a href="" class="font-title-btn text-black-5">ver todos</a>
-                </div>
+                    <h3>Publicidad</h3>
+<!--                     <a href="" class="font-title-btn text-black-5">ver todos</a>
+ -->                </div>
                 <div class="sw-box-shadow mt-20">
              
                     <div class="swiper tf-swiper" data-space-between="20" data-preview="1.3" data-tablet="1.5" data-desktop="2">
                         <div class="swiper-wrapper">
                             
-                            <div class="swiper-slide" *ngFor="let specialist of specialists "  [hidden]="specialist.status != 'approved'">
+                            <div class="swiper-slide" *ngFor="let document of documents ">
                                 <a href="" class="box-recent-project">
                                     <div class="top">
                                         <div class="d-flex justify-content-between align-items-center gap-10" >
                                             <div class="box-icon w-24 text-info" style="background-color: #00c9f3;">
                                                 <i class="icon-check fs-18 " style="color: white;"></i>
                                             </div>
-                                            <div class="h8 fw-bold flex-grow-1">{{specialist.full_name}}</div>
+                                            <div class="h8 fw-bold flex-grow-1">{{document.subject}}</div>
+                                            <div class="h8 fw-bold flex-grow-1">{{document.entity}}</div>
+
+
                                             <span>
                                                 <!-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g opacity="0.6">
@@ -42,9 +45,9 @@
                                             <li class="meta-item"><i class="icon-link fs-12"></i> 09</li>
                                         </ul>
                                     </div>
-                                    <div class="mt-14 box-image" *ngIf="specialist.images[0]!==undefined">
-                                        <img src="{{specialist.images[0]}}" alt="img">
-                                    </div>
+                                    <!-- <div class="mt-14 box-image" >
+                                        <img src="assets/images/avt/avt3.jpg" alt="img">
+                                    </div> -->
                                     <div class="mt-14 bottom d-flex align-items-center">
                                         <ul class="list-stacked">
                                             <li class="avt-list">
@@ -88,7 +91,7 @@
             </div>
             <div class="mt-32">
                 <div class="section-title d-flex justify-content-between align-items-center">
-                    <h3>Servicios destacados</h3>
+                    <h3>Repositorios Destacados</h3>
                     <a href="" class="font-title-btn text-black-5">ver todos</a>
                 </div>
                 <a href="" class="mt-20 box-task style-2">
