@@ -1111,7 +1111,7 @@ select {
 }
 
 .bg-grey-2 {
-  background-color: #f6f5f7;
+  background: linear-gradient(135deg, #864ba8, #f69950);
 }
 
 .bg-soft-grey {
@@ -1175,7 +1175,7 @@ select {
 }
 
 .text-danger {
-  color: #f05a5a !important;
+  color: #fff !important;
 }
 
 .text-warning {
