@@ -7,68 +7,77 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class RealtimeSpecialistsService implements OnDestroy {
   private pb: PocketBase;
-  private specialistsSubject = new BehaviorSubject<any[]>([]);
 
-  // Esta es la propiedad que expondrá el Observable para que los componentes puedan suscribirse a ella
-  public documents$: Observable<any[]> =
-    this.specialistsSubject.asObservable();
+  // Definir BehaviorSubjects y Observables específicos
+  private documentsSubject = new BehaviorSubject<any[]>([]);
+  public documents$: Observable<any[]> = this.documentsSubject.asObservable();
+
+  private repositoriosSubject = new BehaviorSubject<any[]>([]);
+  public repositorios$: Observable<any[]> = this.repositoriosSubject.asObservable();
+
+  // Puedes agregar más BehaviorSubjects y Observables si es necesario
+  // private anotherCollectionSubject = new BehaviorSubject<any[]>([]);
+  // public anotherCollection$: Observable<any[]> = this.anotherCollectionSubject.asObservable();
 
   constructor() {
     this.pb = new PocketBase('https://db.buckapi.com:8090');
-    this.subscribeToSpecialists();
-    this.subscribeToDocuments();
+    this.subscribeToCollections();
   }
 
-  private async subscribeToSpecialists() {
+  private async subscribeToCollections() {
     // (Opcional) Autenticación
     await this.pb
       .collection('users')
       .authWithPassword('admin@email.com', 'admin1234');
 
-    // Suscribirse a cambios en cualquier registro de la colección 'camiwaSpecialists'
+    // Suscribirse a las colecciones específicas
     this.pb.collection('vendricomDocuments').subscribe('*', (e) => {
-      this.handleRealtimeEvent(e);
+      this.handleRealtimeEvent(e, 'documents');
+    });
+    this.pb.collection('vendricomRepositorios').subscribe('*', (e) => {
+      this.handleRealtimeEvent(e, 'repositorios');
     });
 
-    // Inicializar la lista de especialistas
-    this.updateDocumentsList();
-  }
-  private async subscribeToDocuments  () {
-    // (Opcional) Autenticación
-    await this.pb
-      .collection('users')
-      .authWithPassword('admin@email.com', 'admin1234');
 
-    // Suscribirse a cambios en cualquier registro de la colección 'camiwaSpecialists'
-    this.pb.collection('vendricomDocuments').subscribe('*', (e) => {
-      this.handleRealtimeEvent(e);
-    });
-
-    // Inicializar la lista de especialistas
+    // Inicializar las listas
     this.updateDocumentsList();
+    this.updateRepositorios();
   }
 
-  private handleRealtimeEvent(event: any) {
-    // Aquí puedes manejar las acciones 'create', 'update' y 'delete'
-    console.log(event.action);
+ 
+  private handleRealtimeEvent(event: any, collectionName: string) {
+    console.log(`Evento en ${collectionName}: ${event.action}`);
     console.log(event.record);
 
-    // Actualizar la lista de especialistas
+    // Actualizar la lista de la colección correspondiente
     this.updateDocumentsList();
+    this.updateRepositorios();
   }
 
   private async updateDocumentsList() {
+    const records = await this.pb
+    .collection('vendricomDocuments')
+    .getFullList(200 /* cantidad máxima de registros */, {
+      sort: '-created', // Ordenar por fecha de creación
+    });
+  this.documentsSubject.next(records);
+  }
+
+  private async updateRepositorios() {
     // Obtener la lista actualizada de especialistas
     const records = await this.pb
-      .collection('vendricomDocuments')
+      .collection('vendricomRepositorios')
       .getFullList(200 /* cantidad máxima de registros */, {
         sort: '-created', // Ordenar por fecha de creación
       });
-    this.specialistsSubject.next(records);
+    this.repositoriosSubject.next(records);
   }
 
   ngOnDestroy() {
-    // Desuscribirse cuando el servicio se destruye
+    // Desuscribirse de las colecciones cuando el servicio se destruye
     this.pb.collection('vendricomDocuments').unsubscribe('*');
+    this.pb.collection('vendricomRepositorios').unsubscribe('*');
+    // Desuscribirse de otras colecciones si es necesario
   }
+
 }

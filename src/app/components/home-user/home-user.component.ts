@@ -28,16 +28,36 @@ interface documents {
 export class HomeUserComponent {
   specialists: any[] = [];
   documents: any []=[];
+  repositorios: any []=[];
+
   private subscription: Subscription = new Subscription();
   constructor(private realtimeSpecialistsService: RealtimeSpecialistsService,
     public auth: PocketAuthService,
     public global:GlobalService
   ) {}
   ngOnInit(): void {
-    this.realtimeSpecialistsService.documents$.subscribe((data) => {
-      this.documents = data;
-  
-    });
+    // Agregar la suscripción de documents$ al objeto Subscription
+    this.subscription.add(
+      this.realtimeSpecialistsService.documents$.subscribe(
+        (data) => {
+          this.documents = data;
+        },
+        (error) => {
+          console.error('Error al suscribirse a documents$', error);
+        }
+      )
+    );
+
+    // Agregar la suscripción de repositorios$ al objeto Subscription
+    this.realtimeSpecialistsService.repositorios$.subscribe(
+      (data) => {
+        this.repositorios = data;
+      },
+      (error) => {
+        console.error('Error al suscribirse a repositorios$', error);
+      }
+    );
+    
   }
 
   ngOnDestroy(): void {

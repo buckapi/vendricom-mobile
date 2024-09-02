@@ -89,46 +89,35 @@
                 
               
             </div>
-            <div class="mt-32">
-                <div class="section-title d-flex justify-content-between align-items-center">
-                    <h3>Repositorios Destacados</h3>
-                    <a href="" class="font-title-btn text-black-5">ver todos</a>
+            <div class="mt-24 d-flex justify-content-between align-items-center">
+                <h3>Repositorios</h3>
+                <a  class="font-title-btn text-black-5">Ver todo</a>
+            </div> 
+            <div class="grid-layout-1 mt-16 gap-10">
+                <div *ngFor="let repositorio of repositorios">
+                  <a class="item1 box-card-project style-1 bg-1">
+                    <div class="fw-bold text-white body-3">{{repositorio.name}}</div>
+                    <ul class="mt-4 d-flex gap-4 align-items-center meta-list">
+                      <li class="d-flex align-items-center gap-4 text-caption-3"><i class="icon-calendar fs-10"></i> June 15, 2022</li>
+                      <li class="dot"></li>
+                      <li class="d-flex align-items-center gap-4 text-caption-3"><i class="icon-chat2 fs-10"></i>16</li>
+                    </ul>
+                    <div class="box-progress">
+                      <div class="progress h-5">
+                        <div class="progress-bar progress-animated" role="progressbar" style="width: 56%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="mt-6 d-flex justify-content-between align-items-center progress-desc">
+                        <span class="text-caption-3 title">In Progress</span>
+                        <span class="fw-6 text-caption-3 value">56%</span>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-                <a href="" class="mt-20 box-task style-2">
-                    <div class="box-icon w-52 radius-8">
-                        <i class="icon-wallet"></i>
-                    </div>
-                    <div class="content">
-                        <div class="font-title-btn text-black-2">Limpieza bucal</div>
-                        <div class="mt-10 d-flex align-items-center gap-16">
-                            <ul class="list-stacked">
-                                <li class="avt-list">
-                                    <div class="avatar avt-24 round">
-                                        <img src="assets/images/avt/avt3.jpg" alt="img">
-                                    </div>
-                                </li>
-                                <li class="avt-list">
-                                    <div class="avatar avt-24 round">
-                                        <img src="assets/images/avt/avt4.jpg" alt="img">
-                                    </div>
-                                </li>
-                                <li class="avt-list">
-                                    <div class="avatar avt-24 round member">
-                                        3+
-                                    </div> 
-                                </li>
-                            </ul>
-                            <span class="meta-item"><i class="icon-star fs-12"></i> 16 opiniones</span>
-                        </div>
-                    </div>
-                    <div class="circle_percent" data-percent=" 95">
-                        <div class="circle_inner">
-                            <div class="round_per"></div>
-                        </div>
-                    </div>
-                </a>
+              </div>
+              
+            
                 
-            </div>
+          
         </div>
     </div>
     

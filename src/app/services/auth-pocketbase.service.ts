@@ -16,7 +16,19 @@ export class PocketAuthService {
   constructor(public global: GlobalService) {
     this.pb = new PocketBase('https://db.buckapi.com:8090');
   }
+  async saveRepositorios(repositoriosData: any): Promise<any> {
+    try {
+      const record = await this.pb
+        .collection('vendricomRepositorios')
+        .create(repositoriosData);
+      console.log('repositorio guardada exitosamente:', record);
 
+      return record; // Si necesitas devolver el registro creado
+    } catch (error) {
+      console.error('Error al guardar la repositorio:', error);
+      throw error; // Puedes lanzar el error para manejarlo en otro lugar
+    }
+  }
   async saveCategor(categoryData: any): Promise<any> {
     try {
       const record = await this.pb
