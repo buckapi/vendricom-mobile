@@ -28,6 +28,7 @@ interface documents {
 export class HomeUserComponent {
   specialists: any[] = [];
   documents: any []=[];
+  publicidades: any []=[];
   repositorios: any []=[];
 
   private subscription: Subscription = new Subscription();
@@ -55,6 +56,14 @@ export class HomeUserComponent {
       },
       (error) => {
         console.error('Error al suscribirse a repositorios$', error);
+      }
+    );
+    this.realtimeSpecialistsService.publicidades$.subscribe(
+      (data) => {
+        this.publicidades = data;
+      },
+      (error) => {
+        console.error('Error al suscribirse a publicidades$', error);
       }
     );
     

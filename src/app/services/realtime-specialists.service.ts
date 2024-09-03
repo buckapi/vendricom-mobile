@@ -15,6 +15,9 @@ export class RealtimeSpecialistsService implements OnDestroy {
   private repositoriosSubject = new BehaviorSubject<any[]>([]);
   public repositorios$: Observable<any[]> = this.repositoriosSubject.asObservable();
 
+  private publicidadesSubject = new BehaviorSubject<any[]>([]);
+  public publicidades$: Observable<any[]> = this.publicidadesSubject.asObservable();
+
   // Puedes agregar más BehaviorSubjects y Observables si es necesario
   // private anotherCollectionSubject = new BehaviorSubject<any[]>([]);
   // public anotherCollection$: Observable<any[]> = this.anotherCollectionSubject.asObservable();
@@ -37,11 +40,13 @@ export class RealtimeSpecialistsService implements OnDestroy {
     this.pb.collection('vendricomRepositorios').subscribe('*', (e) => {
       this.handleRealtimeEvent(e, 'repositorios');
     });
-
-
+    this.pb.collection('vendricomPublicidad').subscribe('*', (e) => {
+      this.handleRealtimeEvent(e, 'publicidades');
+    });
     // Inicializar las listas
     this.updateDocumentsList();
     this.updateRepositorios();
+    this.updatePublicidades();
   }
 
  
@@ -52,6 +57,7 @@ export class RealtimeSpecialistsService implements OnDestroy {
     // Actualizar la lista de la colección correspondiente
     this.updateDocumentsList();
     this.updateRepositorios();
+    this.updatePublicidades();
   }
 
   private async updateDocumentsList() {
@@ -73,10 +79,22 @@ export class RealtimeSpecialistsService implements OnDestroy {
     this.repositoriosSubject.next(records);
   }
 
+  private async updatePublicidades() {
+    // Obtener la lista actualizada de especialistas
+    const records = await this.pb
+      .collection('vendricomPublicidad')
+      .getFullList(200 /* cantidad máxima de registros */, {
+        sort: '-created', // Ordenar por fecha de creación
+      });
+    this.publicidadesSubject.next(records);
+  }
+
   ngOnDestroy() {
     // Desuscribirse de las colecciones cuando el servicio se destruye
     this.pb.collection('vendricomDocuments').unsubscribe('*');
     this.pb.collection('vendricomRepositorios').unsubscribe('*');
+    this.pb.collection('vendricomPublicidad').unsubscribe('*');
+
     // Desuscribirse de otras colecciones si es necesario
   }
 
