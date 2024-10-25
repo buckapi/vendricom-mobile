@@ -1,10 +1,16 @@
 <app-header *ngIf="global.activateRoute !== 'home'"></app-header>
 <app-home [hidden]="global.activateRoute !== 'home'"></app-home>
 <app-home-user [hidden]="global.activateRoute !== 'home-user'"></app-home-user>
+<app-detail-documents [hidden]="global.activateRoute !== 'detail-documents'"></app-detail-documents>
 <app-chat [hidden]="global.activateRoute !== 'chat'"></app-chat>
 <app-login [hidden]="global.activateRoute !== 'login'"></app-login>
 <app-booking [hidden]="global.activateRoute !== 'booking'"></app-booking>
 <app-profile [hidden]="global.activateRoute !== 'profile'"></app-profile>
+<app-normativas [hidden]="global.activateRoute !== 'normativas'"></app-normativas>
+<app-modelos [hidden]="global.activateRoute !== 'modelos'"></app-modelos>
+<app-boletines [hidden]="global.activateRoute !== 'boletines'"></app-boletines>
+<app-jurisprudencias [hidden]="global.activateRoute !== 'jurisprudencias'"></app-jurisprudencias>
+<app-capacitaciones [hidden]="global.activateRoute !== 'capacitaciones'"></app-capacitaciones>
 <app-footer *ngIf="global.activateRoute !== 'home'"></app-footer>
 
 
@@ -12,12 +18,12 @@
 <!-- create project -->
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="createProject" aria-labelledby="offcanvasBottomLabel">
 <div class="offcanvas-header style-1">
-  <h5 class="offcanvas-title" id="offcanvasBottomLabel">Documentos</h5>
+  <h5 class="offcanvas-title" id="offcanvasBottomLabel" style="color: #000;">Busqueda Avanzada</h5>
   <span class="icon-close2 icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
 </div>
 <div class="offcanvas-body pb-32">
-    <input type="text" placeholder="Project Name">
-    <div class="mt-24">
+    <input type="text" placeholder="Nombre del Documento">
+   <!--  <div class="mt-24">
         <h5 class="text-black-2">Layout</h5>
         <ul class="grid-2 gap-20 mt-16">
             <li class="layout-project act-suggest active">
@@ -37,9 +43,9 @@
                 <span class="h9">Board</span>  
             </li>
         </ul>
-    </div>
+    </div> -->
     <div class="mt-24">
-        <h5 class="text-black-2">Ubicación</h5>
+      <h5 class="" style="color: #000;">Búsqueda por año</h5>
         
         <div class="dropdown mt-16">
             <!-- <div class="dropdown-toggle drop-select-visibility" data-bs-toggle="dropdown">
@@ -80,48 +86,48 @@
       </div>
     </div>
     
-    <div class="mt-24">
-      <h6 class="text-black-2">Can Access</h6>
-      <div class="dropdown mt-10">
-          <div class="dropdown-toggle drop-select-access select" data-bs-toggle="dropdown">
-              <img src="assets/images/project/nft.jpg" alt="img">
-              <div class="content">
-                  <div class="body-4 text-black-2 fw-bold text-val-drop">NFT Website Design</div>
-                  <p class="body-2 text-black-5 desc-val-drop">Workspace</p>
-              </div>
-          </div>
-          <div class="dropdown-menu dropdown-access full">
-              <div class="dropdown-item val-drop">
-                  <div class="content">
-                      <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design</div>
-                      <p class="body-2 text-black-5 desc-drop">Workspace</p>
-                  </div>
-              </div>
-              <div class="dropdown-item val-drop">
-                  <div class="content">
-                      <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design UX</div>
-                      <p class="body-2 text-black-5 desc-drop">Workspace UX</p>
-                  </div>
-              </div>
-              
-          </div>
-      </div>
-  </div>
     <!-- <div class="mt-24">
-        <a href="invite-colleagues.html" class="tf-btn outline-btn-primary style-1 gap-8">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.84426 6.04199C10.1593 6.04199 10.4146 6.29735 10.4146 6.61235V9.27403H13.0763C13.3913 9.27403 13.6467 9.5294 13.6467 9.84439C13.6467 10.1594 13.3913 10.4147 13.0763 10.4147H10.4146V13.0764C10.4146 13.3914 10.1593 13.6468 9.84426 13.6468C9.52927 13.6468 9.27391 13.3914 9.27391 13.0764V10.4147H6.61223C6.29723 10.4147 6.04187 10.1594 6.04187 9.84439C6.04187 9.5294 6.29723 9.27403 6.61223 9.27403H9.27391V6.61235C9.27391 6.29735 9.52927 6.04199 9.84426 6.04199Z" fill="#00a08f"/>
-                <path d="M3 5.47156C3 4.10655 4.10655 3 5.47156 3H14.2171C15.582 3 16.6886 4.10655 16.6886 5.47156V14.2171C16.6886 15.582 15.582 16.6886 14.2171 16.6886H5.47156C4.10655 16.6886 3 15.582 3 14.2171V5.47156ZM5.47156 4.14072C4.73655 4.14072 4.14072 4.73655 4.14072 5.47156V14.2171C4.14072 14.9521 4.73655 15.5479 5.47156 15.5479H14.2171C14.9521 15.5479 15.5479 14.9521 15.5479 14.2171V5.47156C15.5479 4.73655 14.9521 4.14072 14.2171 4.14072H5.47156Z" fill="#00a08f"/>
-            </svg>
-            Add Member
-        </a>
-        <a href="create-task.html" class="mt-35 tf-btn primary">aplicar</a>
+        <h6 class="text-black-2">Can Access</h6>
+        <div class="dropdown mt-10">
+            <div class="dropdown-toggle drop-select-access select" data-bs-toggle="dropdown">
+                <img src="assets/images/project/nft.jpg" alt="img">
+                <div class="content">
+                    <div class="body-4 text-black-2 fw-bold text-val-drop">NFT Website Design</div>
+                    <p class="body-2 text-black-5 desc-val-drop">Workspace</p>
+                </div>
+            </div>
+            <div class="dropdown-menu dropdown-access full">
+                <div class="dropdown-item val-drop">
+                    <div class="content">
+                        <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design</div>
+                        <p class="body-2 text-black-5 desc-drop">Workspace</p>
+                    </div>
+                </div>
+                <div class="dropdown-item val-drop">
+                    <div class="content">
+                        <div class="body-4 text-black-2 fw-bold title-drop">NFT Website Design UX</div>
+                        <p class="body-2 text-black-5 desc-drop">Workspace UX</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div> -->
+  <div class="mt-24">
+    <!-- <a href="invite-colleagues.html" class="tf-btn outline-btn-primary style-1 gap-8">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.84426 6.04199C10.1593 6.04199 10.4146 6.29735 10.4146 6.61235V9.27403H13.0763C13.3913 9.27403 13.6467 9.5294 13.6467 9.84439C13.6467 10.1594 13.3913 10.4147 13.0763 10.4147H10.4146V13.0764C10.4146 13.3914 10.1593 13.6468 9.84426 13.6468C9.52927 13.6468 9.27391 13.3914 9.27391 13.0764V10.4147H6.61223C6.29723 10.4147 6.04187 10.1594 6.04187 9.84439C6.04187 9.5294 6.29723 9.27403 6.61223 9.27403H9.27391V6.61235C9.27391 6.29735 9.52927 6.04199 9.84426 6.04199Z" fill="#00a08f"/>
+            <path d="M3 5.47156C3 4.10655 4.10655 3 5.47156 3H14.2171C15.582 3 16.6886 4.10655 16.6886 5.47156V14.2171C16.6886 15.582 15.582 16.6886 14.2171 16.6886H5.47156C4.10655 16.6886 3 15.582 3 14.2171V5.47156ZM5.47156 4.14072C4.73655 4.14072 4.14072 4.73655 4.14072 5.47156V14.2171C4.14072 14.9521 4.73655 15.5479 5.47156 15.5479H14.2171C14.9521 15.5479 15.5479 14.9521 15.5479 14.2171V5.47156C15.5479 4.73655 14.9521 4.14072 14.2171 4.14072H5.47156Z" fill="#00a08f"/>
+        </svg>
+        Add Member
+    </a> -->
+    <a href="" class="mt-35 tf-btn primary">Buscar</a>
+</div>
 </div>
 </div>
 
 <!-- notification -->
-<div class="offcanvas offcanvas-end full" id="notification">
+<!-- <div class="offcanvas offcanvas-end full" id="notification">
 <div class="header fixed-top line-bt">
     <div class="left" data-bs-dismiss="offcanvas">
         <a href="javascript:void(0);" class="icon"><i class="icon-back"></i></a>
@@ -216,7 +222,7 @@
         
     </div>
 </div>       
-</div>
+</div> -->
 
 <!-- sidebar -->
 <div class="modal fade modalLeft" id="sidebar">
@@ -234,19 +240,73 @@
                     <img src="assets/images/avt/avt2.jpg" alt="img">
                 </div>
                 <div class="content-right">
-                    <p class="text-1">Hola</p>
-                    <h6 class="fw-7">Jennifer Parada</h6>
+                    <p class="text-1">Hola!</p>
+                    <h6 class="fw-7" style="color: #582e6d;">Jennifer Parada</h6>
                 </div>
             </div>
             <ul class="pt-20 pb-20">
-                <li class="text-sm-start text-uppercase fw-7 text-2">Main menu</li>
-             
+                <li class="text-sm-start text-uppercase fw-7" style="color: #000;">Menu</li>
                 <li class="mt-16" *ngIf="auth.isLogin()">
-                    <a (click)="auth.logoutUser()" class="nav-link-item not-link">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path opacity="0.4" d="M1.66602 5.37258C1.66602 3.33008 3.35788 1.66675 5.43646 1.66675H9.57072C11.6451 1.66675 13.3327 3.32508 13.3327 5.36425V14.6276C13.3327 16.6709 11.6408 18.3334 9.56139 18.3334H5.42883C3.35364 18.3334 1.66602 16.6751 1.66602 14.6359V13.8526V5.37258Z" fill="#D3D5DA"/>
-                            <path d="M18.149 9.54579L15.7775 7.12162C15.5324 6.87162 15.138 6.87162 14.8937 7.12329C14.6502 7.37495 14.651 7.78079 14.8953 8.03079L16.1947 9.35828H14.9489H7.95696C7.61203 9.35828 7.33203 9.64579 7.33203 9.99995C7.33203 10.355 7.61203 10.6416 7.95696 10.6416H16.1947L14.8953 11.9691C14.651 12.2191 14.6502 12.625 14.8937 12.8766C15.0162 13.0025 15.1761 13.0658 15.3368 13.0658C15.4959 13.0658 15.6558 13.0025 15.7775 12.8783L18.149 10.455C18.2667 10.3341 18.3333 10.1708 18.3333 9.99995C18.3333 9.82995 18.2667 9.66662 18.149 9.54579Z" fill="#D3D5DA"/>
-                        </svg>
+                  <a (click)="global.setRoute('home-user')" class="nav-link-item not-link">
+                    <img class="buttonMenu" src="assets/images/doc1.png" alt="avatar">
+
+                      <span>Documentos</span>
+                  </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)="global.setRoute('normativas')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/doc.png" alt="avatar">
+
+                    <span>Normativas</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)="global.setRoute('modelos')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/modelos.png" alt="avatar">
+
+                    <span>Modelos</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a ((click)="global.setRoute('jurisprudencias')" class="nav-link-item not-link">
+
+                    <img class="buttonMenu" src="assets/images/jurispru.png" alt="avatar">
+                    <span>Jurisprudencias</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)="global.setRoute('boletines')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/clip.png" alt="avatar">
+
+                    <span>Boletines</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)="global.setRoute('capacitaciones')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/curso.png" alt="avatar">
+
+                    <span>Cursos y charlas</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)="global.setRoute('capacitaciones')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/estudio.png" alt="avatar">
+
+                    <span>Estudios de calidad</span>
+                </a>
+              </li>
+              <li class="mt-16" *ngIf="auth.isLogin()">
+                <a (click)=" global.setRoute('capacitaciones')" class="nav-link-item not-link">
+                  <img class="buttonMenu" src="assets/images/capacitaciones.png" alt="avatar">
+
+                    <span class="">Capacitaciones</span>
+                </a>
+              </li>
+                <li class="mt-16" *ngIf="auth.isLogin()">
+                    <a (click)="auth.logoutUser()" class="nav-link-item not-link" >
+                      <div class="buttonMenu">
+                        <i class="icon-log-out text-danger fs-20"></i>   
+                    </div>
                         <span>Cerrar sesion</span>
                     </a>
                 </li>

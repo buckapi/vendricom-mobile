@@ -16,6 +16,12 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { LoginComponent } from './components/login/login.component';
 import { PocketAuthService } from './services/auth-pocketbase.service';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { DetailDocumentsComponent } from './components/detail-documents/detail-documents.component';
+import { NormativasComponent } from './components/normativas/normativas.component';
+import { ModelosComponent } from './components/modelos/modelos.component';
+import { BoletinesComponent } from './components/boletines/boletines.component';
+import { JurisprudenciasComponent } from './components/jurisprudencias/jurisprudencias.component';
+import { CapacitacionesComponent } from './components/capacitaciones/capacitaciones.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -29,7 +35,13 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     HeaderComponent,
     BookingComponent,
     LoginComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    DetailDocumentsComponent,
+    NormativasComponent,
+    ModelosComponent,
+    BoletinesComponent,
+    JurisprudenciasComponent,
+    CapacitacionesComponent
   
 
 ],
@@ -37,12 +49,15 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  isButtonClicked: boolean = false;
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
   private scriptLoader: ScriptLoaderService,
   public auth:PocketAuthService,
   // public pocketbase: PocketbaseService,
   public global: GlobalService) {}
-
+  onMenuClick() {
+    this.isButtonClicked = !this.isButtonClicked; // Cambia el estado entre true y false
+  }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.scriptLoader

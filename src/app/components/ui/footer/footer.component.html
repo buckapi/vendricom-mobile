@@ -1,6 +1,6 @@
 <div class="menubar-footer footer-fixed st-1">
     <ul class="inner-bar">
-        <li class="active" class="boton" (click)="global.setRoute('home-user')">
+        <!-- <li class="active" class="boton" (click)="global.setRoute('home-user')">
             <a (click)="global.setRoute('home-user')">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -17,8 +17,14 @@
                         fill="white" stroke="#31394F" stroke-width="1.5" />
                 </svg>
             </a>
+        </li> -->
+        <li class="active boton" (click)="global.setRoute('home-user')">
+            <a (click)="global.setRoute('home-user')">
+                <i class="fas fa-home"></i> <!-- Icono de Home -->
+            </a>
         </li>
-        <li (click)="global.setRoute('booking')" *ngIf="auth.isLogin()"><a (click)="global.setRoute('booking')" >
+        
+        <!-- <li (click)="global.setRoute('booking')" *ngIf="auth.isLogin()"><a (click)="global.setRoute('booking')" >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M19 6.22222V3.05556C19 2.7756 18.8784 2.50712 18.662 2.30917C18.4457 2.11121 18.1522 2 17.8462 2H5.15385C4.84783 2 4.55434 2.11121 4.33795 2.30917C4.12156 2.50712 4 2.7756 4 3.05556V19.9444C4 20.2244 4.12156 20.4929 4.33795 20.6908C4.55434 20.8888 4.84783 21 5.15385 21H14.3846H17.4167C18.2911 21 19 20.2911 19 19.4167V19.4167V17.8333"
@@ -32,10 +38,8 @@
                         stroke-linejoin="round" />
                 </svg>
             </a>
-        </li>
-        <li class="action-add-task" [hidden]="global.activateRoute!='home-user'">
-            <a href="#createProject" data-bs-toggle="offcanvas"
-                aria-controls="offcanvasBottom"><i class="icon-search"></i></a></li>
+        </li> -->
+       
         <li (click)="global.setRoute('chat')" *ngIf="auth.isLogin()"><a (click)="global.setRoute('chat')">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -60,6 +64,11 @@
                         stroke="#464D61" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
+            </a>
+        </li>
+        <li class="action-add-task" [hidden]="global.activateRoute!='home-user'">
+            <a href="#createProject" data-bs-toggle="offcanvas"
+                aria-controls="offcanvasBottom"><i class="icon-search"></i>
             </a>
         </li>
     </ul>
